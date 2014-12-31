@@ -1,28 +1,27 @@
 ############################################################
-# Dockerfile to build MongoDB container images
-# Based on Ubuntu
+# Dockerfile to build base container images
+# Based on centos 6 
 ############################################################
 
 # Set the base image to Ubuntu
-FROM ubuntu
+FROM centos:centos6 
 
 # File Author / Maintainer
 MAINTAINER laihui laihui0207gm@gmail.com 
 
 # Update the repository sources list
-RUN apt-get update
+RUN yum clean all
 
-RUN apt-get install -y  python python-dev libxml2 libxml2-dev libxslt1-dev python-pip git  mercurial openssh-server ctags ncurses-dev curl
+RUN yum install -y which tar wget git mercurial openssh-server ctags 
 RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
 RUN curl -sSL https://get.rvm.io | bash -s stable --ruby 
-RUN bash -c "source /etc/profile.d/rvm.sh"
-RUN apt-get install -y ruby-dev
-#RUN . /usr/local/rvm/scripts/rvm
-RUN apt-get install nodejs npm -y
+RUN bash -c "source /usr/local/rvm/scripts/rvm"
+RUN yum install python-devel -y;
+RUN yum install ruby-devel -y;
+RUN yum install gcc-c++ openssl-devel -y; cd /usr/local/src;wget http://nodejs.org/dist/node-latest.tar.gz;tar xzvf node-latest.tar.gz;cd node-v*;./configure;make;make install
 RUN mkdir -p /root/workspace
 RUN cd /root/workspace; hg clone https://vim.googlecode.com/hg/ vim
 RUN cd /root/workspace/vim; ./configure --with-features=huge --enable-pythoninterp=yes --enable-rubyinterp=yes;make;make install
-RUN pip install lxml
 
 RUN mkdir /var/run/sshd
 RUN echo 'root:pass' |chpasswd
