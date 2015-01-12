@@ -24,8 +24,11 @@ RUN cd /root/workspace; hg clone https://vim.googlecode.com/hg/ vim
 RUN cd /root/workspace/vim; ./configure --with-features=huge --enable-pythoninterp=yes --enable-rubyinterp=yes;make;make install
 
 RUN mkdir /var/run/sshd
+RUN ssh-keygen -q -N "" -t dsa -f /etc/ssh/ssh_host_dsa_key && ssh-keygen -q -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key && sed -i "s/#UsePrivilegeSeparation.*/UsePrivilegeSeparation no/g" /etc/ssh/sshd_config && sed -i "s/UsePAM.*/UsePAM no/g" /etc/ssh/sshd_config
 RUN echo 'root:pass' |chpasswd
 RUN sed -i "s/PermitRootLogin without-password/#PermitRootLogin without-password/" /etc/ssh/sshd_config
+RUN sed -i "s/#PermitRootLogin yes/PermitRootLogin yes/" /etc/ssh/sshd_config
+##PermitRootLogin yes
 
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
