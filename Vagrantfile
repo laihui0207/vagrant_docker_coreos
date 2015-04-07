@@ -77,7 +77,7 @@ Vagrant.configure("2") do |config|
 			end
 			if $forwared_ports 
 				$forwared_ports.each do |port|
-					config.vm.network "forwarded_port", guest:port , host: port, auto_correct: true
+					config.vm.network "forwarded_port", guest:port[0] , host: port[1], auto_correct: true
 				end
 			end
 
