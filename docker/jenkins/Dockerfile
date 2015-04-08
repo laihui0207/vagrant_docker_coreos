@@ -1,0 +1,40 @@
+# Based on centos 6 
+############################################################
+
+# Set the base image to Ubuntu
+FROM laihui.centos
+
+# File Author / Maintainer
+MAINTAINER laihui laihui0207gm@gmail.com 
+
+# add webex qa repo
+RUN rm -rf /etc/yum.repos.d/
+ADD yum.tar /etc/yum.repos.d
+ADD run.sh /run.sh
+RUN chmod +x /run.sh
+#RUN mkdir yum;
+#RUN cd yum; tar vxf ../yum.tar
+#RUN cp yum/* /etc/yum.repos.d/
+#RUN cd /etc/yum.repos.d;tar vxf /yum.tar
+RUN wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
+RUN rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
+# Update the repository sources list
+RUN yum clean all
+RUN yum install WBXjdk -y
+RUN yum -y install jenkins
+RUN chkconfig jenkins on
+RUN mkdir -p /opt/jenkins/home
+RUN mkdir -p /opt/jenkins/logs
+RUN sed -i -e's/^JENKINS_HOME=.*$/JENKINS_HOME="\/opt\/jenkins\/home"/' /etc/sysconfig/jenkins 
+RUN sed -i -e's/^JENKINS_JAVA_CMD=.*$/JENKINS_JAVA_CMD="\/usr\/java\/bin\/java"/' /etc/sysconfig/jenkins
+RUN sed -i -e's/^JENKINS_USER=.*$/JENKINS_USER="root"/' /etc/sysconfig/jenkins
+RUN sed -i -e's/^JENKINS_JAVA_OPTIONS=.*$/JENKINS_JAVA_OPTIONS="-Djava.awt.headless=true -Xms8192m -Xmx12g -XX:MaxPermSize=512m"/' /etc/sysconfig/jenkins
+RUN sed -i -e's/^JENKINS_ARGS=.*$/JENKINS_ARGS="--prefix=\/jenkins"/' /etc/sysconfig/jenkins
+RUN sed -i -e's/^PARAMS="--logfile=\/var\/log\/jenkins\/jenkins.log --webroot=\/var\/cache\/jenkins\/war --daemon"$/PARAMS="--logfile=\/opt\/jenkins\/logs\/jenkins.log --webroot=\/var\/cache\/jenkins\/war --daemon"/' /etc/init.d/jenkins
+
+VOLUME  ["/opt/jenkins/home"]
+VOLUME  ["/opt/jenkins/logs"]
+
+EXPOSE 8080 
+EXPOSE 22 
+CMD ["/run.sh"]

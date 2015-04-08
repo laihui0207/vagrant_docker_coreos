@@ -45,7 +45,7 @@ $update_channel='alpha'
 # You can then use the docker tool locally by setting the following env var:
 #   export DOCKER_HOST='tcp://127.0.0.1:2375'
 #$expose_docker_tcp=2375
-$forwared_ports=[[5432,5432],[3306,3306],[27017,27017],[4001,4001],[2550,2550],[2234,2234],[1100,110],[1430,143],[6379,6379]]
+$forwared_ports=[[8080,8080],[5432,5432],[3306,3306],[27017,27017],[4001,4001],[2550,2550],[2235,2235],[2234,2234],[1100,110],[1430,143],[6379,6379]]
 # Setting for VirtualBox VMs
 #$vb_gui = false
 #$vb_memory = 1024
