@@ -1,0 +1,10 @@
+[Unit]
+Description=laihui sun's redis
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill redis
+ExecStartPre=-/usr/bin/docker rm redis 
+ExecStart=/usr/bin/docker run -d -p 6379:6379 -v /home/core/data/redis:/data --name redis laihui.redis
