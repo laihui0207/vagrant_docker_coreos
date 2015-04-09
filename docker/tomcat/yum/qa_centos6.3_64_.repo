@@ -1,0 +1,6 @@
+[qa_centos6.3_64_]
+name=CentOS-$releasever - qa_centos6.3_64_
+baseurl=http://hfcsgrepo.qa.webex.com/qa/centos6.3_64//
+gpgcheck=0
+enabled=1
+priority=20

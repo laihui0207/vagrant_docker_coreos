@@ -1,0 +1,6 @@
+[qa_tpgw_noarch]
+name=CentOS-$releasever - qa_tpgw_noarch
+baseurl=http://hfcsgrepo.qa.webex.com/qa/tpgw/noarch/
+gpgcheck=0
+enabled=1
+priority=20

@@ -7,4 +7,4 @@ Requires=docker.service
 TimeoutStartSec=0
 ExecStartPre=-/usr/bin/docker kill jenkins
 ExecStartPre=-/usr/bin/docker rm jenkins
-ExecStart=/usr/bin/docker run  -p 2235:22 -p 8080:8080  -v /home/core/data/jenkins/home:/opt/jenkins/home -v /home/core/data/jenkins/logs:/opt/jenkins/logs --name="jenkins" laihui.jenkins'
+ExecStart=/usr/bin/docker run  -p 2235:22 -p 8080:8080  -v /home/core/data/jenkins/home:/opt/jenkins/home -v /home/core/data/jenkins/logs:/opt/jenkins/logs --name="jenkins" laihui.jenkins

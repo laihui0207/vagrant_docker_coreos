@@ -1,0 +1,6 @@
+[qa_puppetlabs_noarch]
+name=CentOS-$releasever - qa_puppetlabs_noarch
+baseurl=http://hfcsgrepo.qa.webex.com/qa/puppetlabs/noarch/
+gpgcheck=0
+enabled=1
+priority=20

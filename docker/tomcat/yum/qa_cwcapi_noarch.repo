@@ -1,0 +1,6 @@
+[qa_cwcapi_noarch]
+name=CentOS-$releasever - qa_cwcapi_noarch
+baseurl=http://hfcsgrepo.qa.webex.com/qa/cwcapi/noarch/
+gpgcheck=0
+enabled=1
+priority=20

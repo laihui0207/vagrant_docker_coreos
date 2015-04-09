@@ -1,0 +1,6 @@
+[qa_mct_noarch]
+name=CentOS-$releasever - qa_mct_noarch
+baseurl=http://hfcsgrepo.qa.webex.com/qa/mct/noarch/
+gpgcheck=0
+enabled=1
+priority=20

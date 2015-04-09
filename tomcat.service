@@ -1,0 +1,10 @@
+[Unit]
+Description=laihui sun's tomcat
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill tomcat
+ExecStartPre=-/usr/bin/docker rm tomcat 
+ExecStart=/usr/bin/docker run  -p 2236:22 -p 8021:8021 -v /home/core/data/tomcat/webapps:/opt/tomcat/webapps -v /home/core/data/tomcat/logs:/opt/tomcat/logs  --name="tomcat" laihui.tomcat

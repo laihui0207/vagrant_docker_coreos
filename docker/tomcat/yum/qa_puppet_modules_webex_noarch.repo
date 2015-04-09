@@ -1,0 +1,6 @@
+[qa_puppet_modules_webex_noarch]
+name=CentOS-$releasever - qa_puppet_modules_webex_noarch
+baseurl=http://hfcsgrepo.qa.webex.com/qa/puppet_modules_webex/noarch/
+gpgcheck=0
+enabled=1
+priority=20
