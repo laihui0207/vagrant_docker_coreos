@@ -10,5 +10,5 @@ exit
 trap 'stop_svc' SIGTERM
 while true
 do
-sleep 1
+	sleep 1
 done
