@@ -1,6 +1,0 @@
-[qa_systuning_noarch]
-name=CentOS-$releasever - qa_systuning_noarch
-baseurl=http://hfcsgrepo.qa.webex.com/qa/systuning/noarch/
-gpgcheck=0
-enabled=1
-priority=20

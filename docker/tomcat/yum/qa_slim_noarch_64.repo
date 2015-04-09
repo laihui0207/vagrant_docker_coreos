@@ -1,6 +1,0 @@
-[qa_slim_noarch_64]
-name=CentOS-$releasever - qa_slim_noarch_64
-baseurl=http://hfcsgrepo.qa.webex.com/qa/slim/noarch_64/
-gpgcheck=0
-enabled=1
-priority=20

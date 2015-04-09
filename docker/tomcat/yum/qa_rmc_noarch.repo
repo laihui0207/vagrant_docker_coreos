@@ -1,6 +1,0 @@
-[qa_rmc_noarch]
-name=CentOS-$releasever - qa_rmc_noarch
-baseurl=http://hfcsgrepo.qa.webex.com/qa/rmc/noarch/
-gpgcheck=0
-enabled=1
-priority=20

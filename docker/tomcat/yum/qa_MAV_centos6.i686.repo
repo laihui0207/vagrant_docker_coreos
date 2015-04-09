@@ -1,6 +1,0 @@
-[qa_MAV_centos6.i686]
-name=CentOS-$releasever - qa_MAV_centos6.i686
-baseurl=http://hfcsgrepo.qa.webex.com/qa/MAV/centos6.i686/
-gpgcheck=0
-enabled=1
-priority=20
